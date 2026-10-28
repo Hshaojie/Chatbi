@@ -1,0 +1,47 @@
+.env
+.env.*
+!.env.example
+.venv/
+.venv-memory-check/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+frontend/dist/
+data/harness/*.db
+data/harness/*.db-*
+data/eval_reports/
+data/*.sqlite
+data/context_store/
+data/memory_files/
+data/observability/
+docker-data/
+runtime/
+backend/evolution/skills/
+*.log
+
+# ===== 本地临时目录与工具（不提交）=====
+.tmp/
+.tools/
+tmp/
+
+# ===== 运行时生成的技能库（SKILLS_DIR 输出）=====
+skills/
+
+# ===== 本地数据目录 =====
+data/
+
+# ===== 编辑器 / 系统文件 =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ===== 测试与覆盖率产物 =====
+htmlcov/
+.coverage
+coverage.xml

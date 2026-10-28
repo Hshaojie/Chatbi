@@ -1,0 +1,51 @@
+                                                      黄绍杰
+软件工程硕士研究生
+电话：15203361196   邮箱：15203361196@163.com
+
+个人背景
+南开大学     软件学院 ·软件工程 硕士研究生             2025.09 - 至今
+南开大学     软件工程 本科 2021.09 - 2025.09
+
+项目经历
+
+NexusMind 多智能体 ChatBI 系统                   个人项目 ·Agent / LLM 应用            2026.07- 2026.10
+技术栈：Python、FastAPI、LangGraph、Milvus、PostgreSQL、Redis、sqlglot、React、Docker Compose
+项目简介：面向业务人员的自然语言查数（ChatBI）系统，覆盖电商（Olist）与内容/零售（Chinook）两类数据集；以“NL → IR → SQL”两阶段编译与
+LangGraph 多智能体底座把自然语言转为可信 SQL，并提供根因分析、字段级评测与全链路审计。
+主要工作：
+• 意图识别与查询改写：针对口语化问句理解不稳定，融合规则 / LLM / 近期历史三路信号加权投票（权重 0.3 / 0.5 / 0.2，阈值 0.4），低于阈值主动
+  澄清并做口语化改写；SchemaLinker 将自然语言解析为结构化 IR（指标 / 维度 / 过滤 / 排序 / LIMIT），按置信度四层路由到语义层确定性编译、
+  复合指标计划、根因分析规划链或 LLM fallback。
+• 语义层确定性编译与 SQL Guard 三层防护：语义层内置 14 个基础指标、12 个维度与 6 类复合计划，显式记录聚合方式、可用维度与 JOIN 关系，
+  可信 JSON 注册表整体校验后加载且不允许覆盖既有键，已治理指标命中即编译、不经过 LLM 概率生成；SQL Guard 用 sqlglot AST 做静态校验
+  （只读约束 / 方言函数 / 表列存在性 / 多语句拦截）→ 执行失败 LLM 自修复（≤2 轮）→ 结果合理性检查（空结果 / TopN 无 LIMIT / NULL 占比 / 比
+  率越界）。
+• 三级 Schema 检索与混合检索：Schema 按 Domain → Table → Column 三级组织，用本地 BM25、稀疏相似度与 RRF 收敛业务域、定位表与已验证
+  JOIN；文档 RAG 用 Milvus 稠密 + BM25 召回子块，再取 PostgreSQL 父块做 Rerank，避免把同一套名词当成同一实现。
+• LangGraph 多智能体编排：以 StateGraph 为内核构建 14 节点编排图，实现 Supervisor 快速路由、ReAct 事件驱动工具循环、Coordinator 跨模块并行
+  拆解、Reflection + Advisor 定向重试四种编排模式；复杂任务走 Plan with SOTA（强模型出计划、快模型执行）。
+• 记忆与上下文管理：会话与执行状态由 PostgreSQL 检查点持久化、Redis 仅作缓存，长期记忆分 L0–L3 分层；上下文采用 system / context / user-
+  tool 三段式模板，Token 阈值触发自动压缩（system 消息永不压缩、切分点回溯防拆 tool 对），截断前内容以 ref_id 存档供 Agent 按需“回忆”。
+• 量化评测：在 Spider 开放域基准（20 个异构数据库 / 99 题 / zero-shot）上，执行准确率 EX 80.8%（80/99，严格判等）；字段级诊断表命中率
+  97.0%、行召回率 0.851、字段准确率 0.898。
+
+HPay 转账链路优化               实验室组内项目 ·Java 后端                  2026.05 - 2025.09
+技术栈：Java 8、Spring Boot、Spring Cloud、Feign、MyBatis-Plus、MySQL、RabbitMQ
+项目简介：支付平台账户与订单资金链路，负责账户扣减、转账与事件可靠投递的一致性保障。
+主要工作：
+• 转账锁策略演进：基于 MySQL InnoDB 行锁，从“双账户加锁 + 固定顺序”收敛为“单边加锁 + 原子条件扣减 + 原子入账”，事务内降为 1 次加锁 + 2 次
+  更新，并结合事务超时约束长事务。
+• 标准 Outbox 事件投递：以“账户扣款 → 订单创建”这一事务的结果为事件，与订单落库同事务写入本地事件表，把跨系统双写降维为单库事务、消
+  息改由后台可靠投递，用最终一致替代分布式事务。
+• 投递可靠性保障：以状态与版本号做乐观 CAS 抢占防多实例重复发送，配合 RabbitMQ publisher confirm 与 mandatory return 双回执、定时任务恢
+  复“发送中”残留状态、指数退避加抖动重试与死信队列人工重放。
+• 消费端幂等：手动 ack 并对事件唯一键幂等，保证重复投递不影响业务，整体为 at-least-once 语义。
+
+专业技能
+• 语言与后端框架：Python、Java、SQL；FastAPI、Spring Boot、Spring Cloud、Feign、MyBatis-Plus、RESTful API、SSE。
+• 大模型与 Agent：Transformer、Prompt 与上下文工程、LangGraph StateGraph 编排、多智能体协作模式（Supervisor / ReAct / Coordinator /
+  Reflection）、MCP 工具协议、Function Calling。
+• 检索与语义建模：RAG 与混合检索（BM25 / 稀疏相似度 / RRF / Rerank）、Milvus 向量检索、Text2SQL 与语义层建模、sqlglot。
+• 数据与中间件：PostgreSQL、MySQL、Redis、RabbitMQ。
+• 工程与工具：Docker Compose、Git、Linux、React。
+

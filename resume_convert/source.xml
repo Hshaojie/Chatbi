@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler-25.02.0" version="25.02.0">
+<page number="1" position="absolute" top="0" left="0" height="1188" width="918">
+	<fontspec id="0" size="28" family="BCDEEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="1" size="13" family="BCDFEE+Calibri" color="#000000"/>
+	<fontspec id="2" size="13" family="BCDGEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="3" size="13" family="BCDHEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="4" size="17" family="BCDEEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="5" size="18" family="BCDIEE+Calibri" color="#000000"/>
+	<fontspec id="6" size="18" family="BCDEEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="7" size="17" family="BCDHEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="8" size="17" family="BCDGEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="9" size="17" family="BCDFEE+Calibri" color="#000000"/>
+	<fontspec id="10" size="13" family="BCDEEE+MicrosoftYaHei" color="#000000"/>
+	<fontspec id="11" size="13" family="BCDJEE+Calibri" color="#000000"/>
+	<fontspec id="12" size="13" family="BCDIEE+Calibri" color="#000000"/>
+<text top="44" left="416" width="85" height="37" font="0"><b>黄绍杰</b></text>
+<text top="64" left="502" width="3" height="13" font="1"> </text>
+<text top="89" left="49" width="115" height="17" font="2">软件工程硕士研究生</text>
+<text top="93" left="163" width="3" height="13" font="1"> </text>
+<text top="113" left="49" width="38" height="17" font="2">电话：</text>
+<text top="117" left="87" width="71" height="13" font="1">15203361196</text>
+<text top="113" left="158" width="4" height="17" font="3"> </text>
+<text top="113" left="171" width="38" height="17" font="2">邮箱：</text>
+<text top="117" left="209" width="130" height="13" font="1">15203361196@163.com </text>
+<text top="140" left="49" width="69" height="23" font="4"><b>个人背景</b></text>
+<text top="149" left="118" width="3" height="13" font="1"> </text>
+<text top="173" left="49" width="51" height="17" font="2">南开大学</text>
+<text top="173" left="100" width="4" height="17" font="3"> </text>
+<text top="173" left="113" width="51" height="17" font="2">软件学院</text>
+<text top="177" left="164" width="9" height="13" font="1"> · </text>
+<text top="173" left="172" width="51" height="17" font="2">软件工程</text>
+<text top="173" left="223" width="4" height="17" font="3"> </text>
+<text top="173" left="236" width="64" height="17" font="2">硕士研究生</text>
+<text top="173" left="300" width="4" height="17" font="3"> </text>
+<text top="177" left="313" width="52" height="13" font="1">2025.09 - </text>
+<text top="173" left="365" width="26" height="17" font="2">至今</text>
+<text top="177" left="390" width="3" height="13" font="1"> </text>
+<text top="196" left="49" width="51" height="17" font="2">南开大学</text>
+<text top="196" left="100" width="4" height="17" font="3"> </text>
+<text top="196" left="113" width="51" height="17" font="2">软件工程</text>
+<text top="196" left="163" width="4" height="17" font="3"> </text>
+<text top="196" left="176" width="26" height="17" font="2">本科</text>
+<text top="196" left="202" width="4" height="17" font="3"> </text>
+<text top="200" left="215" width="97" height="13" font="1">2021.09 - 2025.09 </text>
+<text top="224" left="49" width="69" height="23" font="4"><b>项目经历</b></text>
+<text top="232" left="118" width="3" height="13" font="1"> </text>
+<text top="267" left="49" width="90" height="18" font="5"><b>NexusMind </b></text>
+<text top="262" left="138" width="72" height="23" font="6"><b>多智能体</b></text>
+<text top="267" left="210" width="57" height="18" font="5"><b> ChatBI </b></text>
+<text top="262" left="268" width="36" height="23" font="6"><b>系统</b></text>
+<text top="263" left="304" width="21" height="22" font="7">   </text>
+<text top="263" left="337" width="66" height="22" font="8">个人项目</text>
+<text top="268" left="403" width="97" height="17" font="9"> · Agent / LLM </text>
+<text top="263" left="500" width="33" height="22" font="8">应用</text>
+<text top="263" left="533" width="21" height="22" font="7">   </text>
+<text top="268" left="566" width="117" height="17" font="9">2026.07- 2026.10</text>
+<text top="271" left="683" width="3" height="13" font="1"> </text>
+<text top="292" left="49" width="38" height="17" font="10"><b>技术栈</b></text>
+<text top="292" left="87" width="13" height="17" font="2">：</text>
+<text top="296" left="100" width="37" height="13" font="1">Python</text>
+<text top="292" left="136" width="13" height="17" font="2">、</text>
+<text top="296" left="149" width="38" height="13" font="1">FastAPI</text>
+<text top="292" left="188" width="13" height="17" font="2">、</text>
+<text top="296" left="200" width="56" height="13" font="1">LangGraph</text>
+<text top="292" left="257" width="13" height="17" font="2">、</text>
+<text top="296" left="269" width="34" height="13" font="1">Milvus</text>
+<text top="292" left="304" width="13" height="17" font="2">、</text>
+<text top="296" left="316" width="59" height="13" font="1">PostgreSQL</text>
+<text top="292" left="376" width="13" height="17" font="2">、</text>
+<text top="296" left="388" width="28" height="13" font="1">Redis</text>
+<text top="292" left="416" width="13" height="17" font="2">、</text>
+<text top="296" left="429" width="34" height="13" font="1">sqlglot</text>
+<text top="292" left="463" width="13" height="17" font="2">、</text>
+<text top="296" left="476" width="29" height="13" font="1">React</text>
+<text top="292" left="505" width="13" height="17" font="2">、</text>
+<text top="296" left="518" width="91" height="13" font="1">Docker Compose </text>
+<text top="315" left="49" width="51" height="17" font="10"><b>项目简介</b></text>
+<text top="315" left="100" width="191" height="17" font="2">：面向业务人员的自然语言查数（</text>
+<text top="319" left="291" width="34" height="13" font="1">ChatBI</text>
+<text top="315" left="325" width="115" height="17" font="2">）系统，覆盖电商（</text>
+<text top="319" left="440" width="24" height="13" font="1">Olist</text>
+<text top="315" left="463" width="51" height="17" font="2">）与内容</text>
+<text top="319" left="515" width="5" height="13" font="1">/</text>
+<text top="315" left="519" width="38" height="17" font="2">零售（</text>
+<text top="319" left="558" width="42" height="13" font="1">Chinook</text>
+<text top="315" left="600" width="102" height="17" font="2">）两类数据集；以</text>
+<text top="319" left="702" width="89" height="13" font="11">“NL → IR → SQL”</text>
+<text top="315" left="791" width="77" height="17" font="2">两阶段编译与</text>
+<text top="319" left="867" width="3" height="13" font="1"> </text>
+<text top="340" left="49" width="59" height="13" font="1">LangGraph </text>
+<text top="336" left="108" width="192" height="17" font="2">多智能体底座把自然语言转为可信</text>
+<text top="340" left="299" width="23" height="13" font="1"> SQL</text>
+<text top="336" left="322" width="268" height="17" font="2">，并提供根因分析、字段级评测与全链路审计。</text>
+<text top="340" left="590" width="3" height="13" font="1"> </text>
+<text top="359" left="49" width="51" height="17" font="10"><b>主要工作</b></text>
+<text top="359" left="100" width="13" height="17" font="2">：</text>
+<text top="363" left="112" width="3" height="13" font="1"> </text>
+<text top="387" left="47" width="9" height="13" font="11">• </text>
+<text top="383" left="56" width="115" height="17" font="10"><b>意图识别与查询改写</b></text>
+<text top="383" left="171" width="230" height="17" font="2">：针对口语化问句理解不稳定，融合规则</text>
+<text top="387" left="401" width="43" height="13" font="1"> / LLM / </text>
+<text top="383" left="443" width="166" height="17" font="2">近期历史三路信号加权投票（</text>
+<text top="383" left="609" width="26" height="17" font="10"><b>权重</b></text>
+<text top="387" left="635" width="74" height="13" font="12"><b> 0.3 / 0.5 / 0.2</b></text>
+<text top="383" left="709" width="38" height="17" font="10"><b>，阈值</b></text>
+<text top="387" left="748" width="19" height="13" font="12"><b> 0.4</b></text>
+<text top="383" left="767" width="102" height="17" font="2">），低于阈值主动</text>
+<text top="404" left="65" width="128" height="17" font="2">澄清并做口语化改写；</text>
+<text top="408" left="192" width="75" height="13" font="1">SchemaLinker </text>
+<text top="404" left="267" width="140" height="17" font="2">将自然语言解析为结构化</text>
+<text top="408" left="408" width="13" height="13" font="1"> IR</text>
+<text top="404" left="421" width="38" height="17" font="2">（指标</text>
+<text top="408" left="459" width="11" height="13" font="1"> / </text>
+<text top="404" left="470" width="26" height="17" font="2">维度</text>
+<text top="408" left="495" width="11" height="13" font="1"> / </text>
+<text top="404" left="506" width="26" height="17" font="2">过滤</text>
+<text top="408" left="531" width="11" height="13" font="1"> / </text>
+<text top="404" left="542" width="26" height="17" font="2">排序</text>
+<text top="408" left="568" width="39" height="13" font="1"> / LIMIT</text>
+<text top="404" left="607" width="77" height="17" font="2">），按置信度</text>
+<text top="404" left="684" width="51" height="17" font="10"><b>四层路由</b></text>
+<text top="404" left="735" width="127" height="17" font="2">到语义层确定性编译、</text>
+<text top="424" left="65" width="191" height="17" font="2">复合指标计划、根因分析规划链或</text>
+<text top="428" left="256" width="67" height="13" font="1"> LLM fallback</text>
+<text top="424" left="324" width="13" height="17" font="2">。</text>
+<text top="428" left="336" width="3" height="13" font="1"> </text>
+<text top="449" left="47" width="9" height="13" font="11">• </text>
+<text top="446" left="56" width="115" height="17" font="10"><b>语义层确定性编译与</b></text>
+<text top="449" left="171" width="61" height="13" font="12"><b> SQL Guard </b></text>
+<text top="446" left="232" width="51" height="17" font="10"><b>三层防护</b></text>
+<text top="446" left="283" width="77" height="17" font="2">：语义层内置</text>
+<text top="449" left="360" width="3" height="13" font="1"> </text>
+<text top="449" left="363" width="16" height="13" font="12"><b>14 </b></text>
+<text top="446" left="379" width="77" height="17" font="10"><b>个基础指标、</b></text>
+<text top="449" left="455" width="16" height="13" font="12"><b>12 </b></text>
+<text top="446" left="471" width="51" height="17" font="10"><b>个维度与</b></text>
+<text top="449" left="522" width="12" height="13" font="12"><b> 6 </b></text>
+<text top="446" left="534" width="64" height="17" font="10"><b>类复合计划</b></text>
+<text top="446" left="598" width="191" height="17" font="2">，显式记录聚合方式、可用维度与</text>
+<text top="449" left="789" width="30" height="13" font="1"> JOIN </text>
+<text top="446" left="819" width="38" height="17" font="2">关系，</text>
+<text top="466" left="65" width="26" height="17" font="2">可信</text>
+<text top="470" left="90" width="32" height="13" font="1"> JSON </text>
+<text top="466" left="123" width="434" height="17" font="2">注册表整体校验后加载且不允许覆盖既有键，已治理指标命中即编译、不经过</text>
+<text top="470" left="556" width="27" height="13" font="1"> LLM </text>
+<text top="466" left="584" width="64" height="17" font="2">概率生成；</text>
+<text top="470" left="648" width="58" height="13" font="1">SQL Guard </text>
+<text top="466" left="705" width="13" height="17" font="2">用</text>
+<text top="470" left="718" width="63" height="13" font="1"> sqlglot AST </text>
+<text top="466" left="780" width="64" height="17" font="2">做静态校验</text>
+<text top="487" left="65" width="64" height="17" font="2">（只读约束</text>
+<text top="491" left="129" width="11" height="13" font="1"> / </text>
+<text top="487" left="139" width="51" height="17" font="2">方言函数</text>
+<text top="491" left="190" width="11" height="13" font="1"> / </text>
+<text top="487" left="201" width="64" height="17" font="2">表列存在性</text>
+<text top="491" left="265" width="11" height="13" font="1"> / </text>
+<text top="487" left="275" width="77" height="17" font="2">多语句拦截）</text>
+<text top="491" left="352" width="14" height="13" font="11">→ </text>
+<text top="487" left="367" width="51" height="17" font="2">执行失败</text>
+<text top="491" left="418" width="27" height="13" font="1"> LLM </text>
+<text top="487" left="445" width="51" height="17" font="2">自修复（</text>
+<text top="491" left="496" width="16" height="13" font="11">≤2 </text>
+<text top="487" left="512" width="26" height="17" font="2">轮）</text>
+<text top="491" left="537" width="14" height="13" font="11">→ </text>
+<text top="487" left="552" width="140" height="17" font="2">结果合理性检查（空结果</text>
+<text top="491" left="692" width="41" height="13" font="1"> / TopN </text>
+<text top="487" left="733" width="13" height="17" font="2">无</text>
+<text top="491" left="746" width="72" height="13" font="1"> LIMIT / NULL </text>
+<text top="487" left="819" width="25" height="17" font="2">占比</text>
+<text top="491" left="844" width="11" height="13" font="1"> / </text>
+<text top="487" left="855" width="13" height="17" font="2">比</text>
+<text top="507" left="65" width="64" height="17" font="2">率越界）。</text>
+<text top="511" left="129" width="3" height="13" font="1"> </text>
+<text top="533" left="47" width="9" height="13" font="11">• </text>
+<text top="529" left="56" width="26" height="17" font="10"><b>三级</b></text>
+<text top="533" left="82" width="47" height="13" font="12"><b> Schema </b></text>
+<text top="529" left="129" width="89" height="17" font="10"><b>检索与混合检索</b></text>
+<text top="529" left="218" width="13" height="17" font="2">：</text>
+<text top="533" left="231" width="44" height="13" font="1">Schema </text>
+<text top="529" left="274" width="13" height="17" font="2">按</text>
+<text top="533" left="287" width="3" height="13" font="1"> </text>
+<text top="533" left="290" width="146" height="13" font="11">Domain → Table → Column </text>
+<text top="529" left="436" width="102" height="17" font="2">三级组织，用本地</text>
+<text top="533" left="538" width="34" height="13" font="1"> BM25</text>
+<text top="529" left="572" width="89" height="17" font="2">、稀疏相似度与</text>
+<text top="533" left="661" width="26" height="13" font="1"> RRF </text>
+<text top="529" left="687" width="166" height="17" font="2">收敛业务域、定位表与已验证</text>
+<text top="533" left="853" width="3" height="13" font="1"> </text>
+<text top="553" left="65" width="24" height="13" font="1">JOIN</text>
+<text top="549" left="89" width="38" height="17" font="2">；文档</text>
+<text top="553" left="127" width="28" height="13" font="1"> RAG </text>
+<text top="549" left="155" width="13" height="17" font="2">用</text>
+<text top="553" left="168" width="40" height="13" font="1"> Milvus </text>
+<text top="549" left="208" width="26" height="17" font="2">稠密</text>
+<text top="553" left="233" width="46" height="13" font="1"> + BM25 </text>
+<text top="549" left="279" width="89" height="17" font="2">召回子块，再取</text>
+<text top="553" left="369" width="65" height="13" font="1"> PostgreSQL </text>
+<text top="549" left="434" width="38" height="17" font="2">父块做</text>
+<text top="553" left="472" width="39" height="13" font="1"> Rerank</text>
+<text top="549" left="511" width="204" height="17" font="2">，避免把同一套名词当成同一实现。</text>
+<text top="553" left="715" width="3" height="13" font="1"> </text>
+<text top="575" left="47" width="9" height="13" font="11">• </text>
+<text top="575" left="56" width="60" height="13" font="12"><b>LangGraph </b></text>
+<text top="571" left="116" width="77" height="17" font="10"><b>多智能体编排</b></text>
+<text top="571" left="193" width="26" height="17" font="2">：以</text>
+<text top="575" left="218" width="64" height="13" font="1"> StateGraph </text>
+<text top="571" left="283" width="64" height="17" font="2">为内核构建</text>
+<text top="575" left="347" width="3" height="13" font="1"> </text>
+<text top="575" left="350" width="16" height="13" font="12"><b>14 </b></text>
+<text top="571" left="365" width="64" height="17" font="10"><b>节点编排图</b></text>
+<text top="571" left="429" width="38" height="17" font="2">，实现</text>
+<text top="575" left="467" width="61" height="13" font="1"> Supervisor </text>
+<text top="571" left="528" width="64" height="17" font="2">快速路由、</text>
+<text top="575" left="592" width="33" height="13" font="1">ReAct </text>
+<text top="571" left="625" width="115" height="17" font="2">事件驱动工具循环、</text>
+<text top="575" left="740" width="65" height="13" font="1">Coordinator </text>
+<text top="571" left="805" width="64" height="17" font="2">跨模块并行</text>
+<text top="591" left="65" width="38" height="17" font="2">拆解、</text>
+<text top="595" left="103" width="106" height="13" font="1">Reflection + Advisor </text>
+<text top="591" left="209" width="51" height="17" font="2">定向重试</text>
+<text top="591" left="260" width="77" height="17" font="10"><b>四种编排模式</b></text>
+<text top="591" left="337" width="77" height="17" font="2">；复杂任务走</text>
+<text top="595" left="414" width="82" height="13" font="1"> Plan with SOTA</text>
+<text top="591" left="496" width="191" height="17" font="2">（强模型出计划、快模型执行）。</text>
+<text top="595" left="687" width="3" height="13" font="1"> </text>
+<text top="617" left="47" width="9" height="13" font="11">• </text>
+<text top="613" left="56" width="102" height="17" font="10"><b>记忆与上下文管理</b></text>
+<text top="613" left="158" width="115" height="17" font="2">：会话与执行状态由</text>
+<text top="617" left="273" width="65" height="13" font="1"> PostgreSQL </text>
+<text top="613" left="338" width="89" height="17" font="2">检查点持久化、</text>
+<text top="617" left="427" width="31" height="13" font="1">Redis </text>
+<text top="613" left="458" width="128" height="17" font="2">仅作缓存，长期记忆分</text>
+<text top="617" left="585" width="15" height="13" font="1"> L0</text>
+<text top="617" left="600" width="6" height="13" font="11">–</text>
+<text top="617" left="606" width="15" height="13" font="1">L3 </text>
+<text top="613" left="621" width="102" height="17" font="2">分层；上下文采用</text>
+<text top="617" left="723" width="126" height="13" font="1"> system / context / user-</text>
+<text top="637" left="65" width="23" height="13" font="1">tool </text>
+<text top="633" left="88" width="77" height="17" font="2">三段式模板，</text>
+<text top="637" left="165" width="35" height="13" font="1">Token </text>
+<text top="633" left="199" width="115" height="17" font="2">阈值触发自动压缩（</text>
+<text top="637" left="315" width="39" height="13" font="1">system </text>
+<text top="633" left="354" width="179" height="17" font="2">消息永不压缩、切分点回溯防拆</text>
+<text top="637" left="533" width="26" height="13" font="1"> tool </text>
+<text top="633" left="559" width="115" height="17" font="2">对），截断前内容以</text>
+<text top="637" left="674" width="36" height="13" font="1"> ref_id </text>
+<text top="633" left="710" width="38" height="17" font="2">存档供</text>
+<text top="637" left="748" width="36" height="13" font="1"> Agent </text>
+<text top="633" left="785" width="26" height="17" font="2">按需</text>
+<text top="637" left="810" width="5" height="13" font="11">“</text>
+<text top="633" left="816" width="26" height="17" font="2">回忆</text>
+<text top="637" left="841" width="5" height="13" font="11">”</text>
+<text top="633" left="847" width="13" height="17" font="2">。</text>
+<text top="637" left="859" width="3" height="13" font="1"> </text>
+<text top="659" left="47" width="9" height="13" font="11">• </text>
+<text top="655" left="56" width="51" height="17" font="10"><b>量化评测</b></text>
+<text top="655" left="107" width="26" height="17" font="2">：在</text>
+<text top="659" left="133" width="39" height="13" font="1"> Spider </text>
+<text top="655" left="171" width="77" height="17" font="2">开放域基准（</text>
+<text top="659" left="248" width="16" height="13" font="1">20 </text>
+<text top="655" left="264" width="77" height="17" font="2">个异构数据库</text>
+<text top="659" left="340" width="26" height="13" font="1"> / 99 </text>
+<text top="655" left="367" width="13" height="17" font="2">题</text>
+<text top="659" left="380" width="60" height="13" font="1"> / zero-shot</text>
+<text top="655" left="439" width="102" height="17" font="2">）上，执行准确率</text>
+<text top="659" left="542" width="3" height="13" font="1"> </text>
+<text top="659" left="544" width="48" height="13" font="12"><b>EX 80.8%</b></text>
+<text top="655" left="592" width="13" height="17" font="10"><b>（</b></text>
+<text top="659" left="605" width="31" height="13" font="12"><b>80/99</b></text>
+<text top="655" left="637" width="77" height="17" font="10"><b>，严格判等）</b></text>
+<text top="655" left="713" width="77" height="17" font="2">；字段级诊断</text>
+<text top="655" left="790" width="51" height="17" font="10"><b>表命中率</b></text>
+<text top="659" left="841" width="3" height="13" font="12"><b> </b></text>
+<text top="679" left="65" width="32" height="13" font="12"><b>97.0%</b></text>
+<text top="675" left="97" width="64" height="17" font="10"><b>、行召回率</b></text>
+<text top="679" left="161" width="32" height="13" font="12"><b> 0.851</b></text>
+<text top="675" left="193" width="76" height="17" font="10"><b>、字段准确率</b></text>
+<text top="679" left="269" width="32" height="13" font="12"><b> 0.898</b></text>
+<text top="675" left="302" width="13" height="17" font="2">。</text>
+<text top="679" left="314" width="3" height="13" font="1"> </text>
+<text top="709" left="49" width="42" height="18" font="5"><b>HPay </b></text>
+<text top="704" left="91" width="108" height="23" font="6"><b>转账链路优化</b></text>
+<text top="706" left="199" width="21" height="22" font="7">   </text>
+<text top="706" left="232" width="116" height="22" font="8">实验室组内项目</text>
+<text top="711" left="348" width="44" height="17" font="9"> · Java </text>
+<text top="706" left="392" width="33" height="22" font="8">后端</text>
+<text top="706" left="425" width="21" height="22" font="7">   </text>
+<text top="711" left="457" width="121" height="17" font="9">2026.05 - 2025.09</text>
+<text top="713" left="579" width="3" height="13" font="1"> </text>
+<text top="734" left="49" width="38" height="17" font="10"><b>技术栈</b></text>
+<text top="734" left="87" width="13" height="17" font="2">：</text>
+<text top="738" left="100" width="32" height="13" font="1">Java 8</text>
+<text top="734" left="131" width="13" height="17" font="2">、</text>
+<text top="738" left="144" width="60" height="13" font="1">Spring Boot</text>
+<text top="734" left="204" width="13" height="17" font="2">、</text>
+<text top="738" left="217" width="65" height="13" font="1">Spring Cloud</text>
+<text top="734" left="282" width="13" height="17" font="2">、</text>
+<text top="738" left="295" width="28" height="13" font="1">Feign</text>
+<text top="734" left="322" width="13" height="17" font="2">、</text>
+<text top="738" left="335" width="67" height="13" font="1">MyBatis-Plus</text>
+<text top="734" left="402" width="13" height="17" font="2">、</text>
+<text top="738" left="415" width="36" height="13" font="1">MySQL</text>
+<text top="734" left="452" width="13" height="17" font="2">、</text>
+<text top="738" left="464" width="56" height="13" font="1">RabbitMQ </text>
+<text top="757" left="49" width="51" height="17" font="10"><b>项目简介</b></text>
+<text top="757" left="100" width="485" height="17" font="2">：支付平台账户与订单资金链路，负责账户扣减、转账与事件可靠投递的一致性保障。</text>
+<text top="761" left="584" width="3" height="13" font="1"> </text>
+<text top="781" left="49" width="51" height="17" font="10"><b>主要工作</b></text>
+<text top="781" left="100" width="13" height="17" font="2">：</text>
+<text top="785" left="112" width="3" height="13" font="1"> </text>
+<text top="808" left="47" width="9" height="13" font="11">• </text>
+<text top="805" left="56" width="89" height="17" font="10"><b>转账锁策略演进</b></text>
+<text top="805" left="145" width="38" height="17" font="2">：基于</text>
+<text top="808" left="184" width="83" height="13" font="1"> MySQL InnoDB </text>
+<text top="805" left="267" width="51" height="17" font="2">行锁，从</text>
+<text top="808" left="318" width="5" height="13" font="11">“</text>
+<text top="805" left="323" width="64" height="17" font="2">双账户加锁</text>
+<text top="808" left="387" width="12" height="13" font="1"> + </text>
+<text top="805" left="399" width="51" height="17" font="2">固定顺序</text>
+<text top="808" left="450" width="5" height="13" font="11">”</text>
+<text top="805" left="455" width="38" height="17" font="2">收敛为</text>
+<text top="808" left="494" width="5" height="13" font="11">“</text>
+<text top="805" left="499" width="51" height="17" font="10"><b>单边加锁</b></text>
+<text top="808" left="550" width="12" height="13" font="12"><b> + </b></text>
+<text top="805" left="562" width="77" height="17" font="10"><b>原子条件扣减</b></text>
+<text top="808" left="639" width="12" height="13" font="12"><b> + </b></text>
+<text top="805" left="651" width="51" height="17" font="10"><b>原子入账</b></text>
+<text top="808" left="702" width="5" height="13" font="11">”</text>
+<text top="805" left="707" width="76" height="17" font="2">，事务内降为</text>
+<text top="808" left="784" width="12" height="13" font="1"> 1 </text>
+<text top="805" left="796" width="38" height="17" font="2">次加锁</text>
+<text top="808" left="834" width="21" height="13" font="1"> + 2 </text>
+<text top="805" left="856" width="13" height="17" font="2">次</text>
+<text top="825" left="65" width="204" height="17" font="2">更新，并结合事务超时约束长事务。</text>
+<text top="829" left="269" width="3" height="13" font="1"> </text>
+<text top="850" left="47" width="9" height="13" font="11">• </text>
+<text top="847" left="56" width="26" height="17" font="10"><b>标准</b></text>
+<text top="850" left="82" width="45" height="13" font="12"><b> Outbox </b></text>
+<text top="847" left="127" width="51" height="17" font="10"><b>事件投递</b></text>
+<text top="847" left="178" width="26" height="17" font="2">：以</text>
+<text top="850" left="203" width="5" height="13" font="11">“</text>
+<text top="847" left="209" width="51" height="17" font="2">账户扣款</text>
+<text top="850" left="260" width="3" height="13" font="1"> </text>
+<text top="850" left="263" width="14" height="13" font="11">→ </text>
+<text top="847" left="277" width="51" height="17" font="2">订单创建</text>
+<text top="850" left="328" width="5" height="13" font="11">”</text>
+<text top="847" left="334" width="536" height="17" font="2">这一事务的结果为事件，与订单落库同事务写入本地事件表，把跨系统双写降维为单库事务、消</text>
+<text top="867" left="65" width="294" height="17" font="2">息改由后台可靠投递，用最终一致替代分布式事务。</text>
+<text top="871" left="358" width="3" height="13" font="1"> </text>
+<text top="892" left="47" width="9" height="13" font="11">• </text>
+<text top="889" left="56" width="89" height="17" font="10"><b>投递可靠性保障</b></text>
+<text top="889" left="145" width="115" height="17" font="2">：以状态与版本号做</text>
+<text top="889" left="260" width="26" height="17" font="10"><b>乐观</b></text>
+<text top="892" left="286" width="26" height="13" font="12"><b> CAS </b></text>
+<text top="889" left="312" width="26" height="17" font="10"><b>抢占</b></text>
+<text top="889" left="338" width="140" height="17" font="2">防多实例重复发送，配合</text>
+<text top="892" left="478" width="153" height="13" font="1"> RabbitMQ publisher confirm </text>
+<text top="889" left="631" width="13" height="17" font="2">与</text>
+<text top="892" left="644" width="99" height="13" font="1"> mandatory return </text>
+<text top="889" left="742" width="115" height="17" font="2">双回执、定时任务恢</text>
+<text top="909" left="65" width="13" height="17" font="2">复</text>
+<text top="913" left="78" width="5" height="13" font="11">“</text>
+<text top="909" left="83" width="38" height="17" font="2">发送中</text>
+<text top="913" left="121" width="5" height="13" font="11">”</text>
+<text top="909" left="127" width="306" height="17" font="2">残留状态、指数退避加抖动重试与死信队列人工重放。</text>
+<text top="913" left="433" width="3" height="13" font="1"> </text>
+<text top="934" left="47" width="9" height="13" font="11">• </text>
+<text top="930" left="56" width="64" height="17" font="10"><b>消费端幂等</b></text>
+<text top="930" left="120" width="38" height="17" font="2">：手动</text>
+<text top="934" left="158" width="23" height="13" font="1"> ack </text>
+<text top="930" left="181" width="319" height="17" font="2">并对事件唯一键幂等，保证重复投递不影响业务，整体为</text>
+<text top="934" left="500" width="74" height="13" font="1"> at-least-once </text>
+<text top="930" left="574" width="38" height="17" font="2">语义。</text>
+<text top="934" left="612" width="3" height="13" font="1"> </text>
+<text top="958" left="49" width="69" height="23" font="4"><b>专业技能</b></text>
+<text top="966" left="118" width="3" height="13" font="1"> </text>
+<text top="994" left="47" width="9" height="13" font="11">• </text>
+<text top="991" left="56" width="89" height="17" font="10"><b>语言与后端框架</b></text>
+<text top="991" left="145" width="13" height="17" font="2">：</text>
+<text top="994" left="158" width="37" height="13" font="1">Python</text>
+<text top="991" left="195" width="13" height="17" font="2">、</text>
+<text top="994" left="208" width="22" height="13" font="1">Java</text>
+<text top="991" left="230" width="13" height="17" font="2">、</text>
+<text top="994" left="242" width="20" height="13" font="1">SQL</text>
+<text top="991" left="262" width="13" height="17" font="2">；</text>
+<text top="994" left="275" width="38" height="13" font="1">FastAPI</text>
+<text top="991" left="313" width="13" height="17" font="2">、</text>
+<text top="994" left="326" width="60" height="13" font="1">Spring Boot</text>
+<text top="991" left="386" width="13" height="17" font="2">、</text>
+<text top="994" left="399" width="65" height="13" font="1">Spring Cloud</text>
+<text top="991" left="464" width="13" height="17" font="2">、</text>
+<text top="994" left="477" width="28" height="13" font="1">Feign</text>
+<text top="991" left="505" width="13" height="17" font="2">、</text>
+<text top="994" left="518" width="67" height="13" font="1">MyBatis-Plus</text>
+<text top="991" left="585" width="13" height="17" font="2">、</text>
+<text top="994" left="598" width="59" height="13" font="1">RESTful API</text>
+<text top="991" left="656" width="13" height="17" font="2">、</text>
+<text top="994" left="669" width="18" height="13" font="1">SSE</text>
+<text top="991" left="687" width="13" height="17" font="2">。</text>
+<text top="994" left="700" width="3" height="13" font="1"> </text>
+<text top="1016" left="47" width="9" height="13" font="11">• </text>
+<text top="1012" left="56" width="51" height="17" font="10"><b>大模型与</b></text>
+<text top="1016" left="107" width="34" height="13" font="12"><b> Agent</b></text>
+<text top="1012" left="142" width="13" height="17" font="2">：</text>
+<text top="1016" left="154" width="65" height="13" font="1">Transformer</text>
+<text top="1012" left="219" width="13" height="17" font="2">、</text>
+<text top="1016" left="232" width="42" height="13" font="1">Prompt </text>
+<text top="1012" left="273" width="89" height="17" font="2">与上下文工程、</text>
+<text top="1016" left="363" width="121" height="13" font="1">LangGraph StateGraph </text>
+<text top="1012" left="484" width="153" height="17" font="2">编排、多智能体协作模式（</text>
+<text top="1016" left="637" width="179" height="13" font="1">Supervisor / ReAct / Coordinator / </text>
+<text top="1036" left="65" width="52" height="13" font="1">Reflection</text>
+<text top="1033" left="117" width="26" height="17" font="2">）、</text>
+<text top="1036" left="143" width="27" height="13" font="1">MCP </text>
+<text top="1033" left="170" width="64" height="17" font="2">工具协议、</text>
+<text top="1036" left="234" width="82" height="13" font="1">Function Calling</text>
+<text top="1033" left="316" width="13" height="17" font="2">。</text>
+<text top="1036" left="329" width="3" height="13" font="1"> </text>
+<text top="1058" left="47" width="9" height="13" font="11">• </text>
+<text top="1054" left="56" width="89" height="17" font="10"><b>检索与语义建模</b></text>
+<text top="1054" left="145" width="13" height="17" font="2">：</text>
+<text top="1058" left="158" width="25" height="13" font="1">RAG </text>
+<text top="1054" left="183" width="77" height="17" font="2">与混合检索（</text>
+<text top="1058" left="260" width="41" height="13" font="1">BM25 / </text>
+<text top="1054" left="301" width="64" height="17" font="2">稀疏相似度</text>
+<text top="1058" left="365" width="77" height="13" font="1"> / RRF / Rerank</text>
+<text top="1054" left="443" width="26" height="17" font="2">）、</text>
+<text top="1058" left="468" width="37" height="13" font="1">Milvus </text>
+<text top="1054" left="505" width="64" height="17" font="2">向量检索、</text>
+<text top="1058" left="569" width="52" height="13" font="1">Text2SQL </text>
+<text top="1054" left="620" width="89" height="17" font="2">与语义层建模、</text>
+<text top="1058" left="710" width="34" height="13" font="1">sqlglot</text>
+<text top="1054" left="744" width="13" height="17" font="2">。</text>
+<text top="1058" left="757" width="3" height="13" font="1"> </text>
+<text top="1079" left="47" width="9" height="13" font="11">• </text>
+<text top="1075" left="56" width="77" height="17" font="10"><b>数据与中间件</b></text>
+<text top="1075" left="133" width="13" height="17" font="2">：</text>
+<text top="1079" left="145" width="59" height="13" font="1">PostgreSQL</text>
+<text top="1075" left="205" width="13" height="17" font="2">、</text>
+<text top="1079" left="217" width="36" height="13" font="1">MySQL</text>
+<text top="1075" left="254" width="13" height="17" font="2">、</text>
+<text top="1079" left="266" width="28" height="13" font="1">Redis</text>
+<text top="1075" left="294" width="13" height="17" font="2">、</text>
+<text top="1079" left="307" width="53" height="13" font="1">RabbitMQ</text>
+<text top="1075" left="360" width="13" height="17" font="2">。</text>
+<text top="1079" left="373" width="3" height="13" font="1"> </text>
+<text top="1100" left="47" width="9" height="13" font="11">• </text>
+<text top="1097" left="56" width="64" height="17" font="10"><b>工程与工具</b></text>
+<text top="1097" left="120" width="13" height="17" font="2">：</text>
+<text top="1100" left="133" width="88" height="13" font="1">Docker Compose</text>
+<text top="1097" left="221" width="13" height="17" font="2">、</text>
+<text top="1100" left="233" width="15" height="13" font="1">Git</text>
+<text top="1097" left="249" width="13" height="17" font="2">、</text>
+<text top="1100" left="261" width="27" height="13" font="1">Linux</text>
+<text top="1097" left="289" width="13" height="17" font="2">、</text>
+<text top="1100" left="301" width="29" height="13" font="1">React</text>
+<text top="1097" left="331" width="13" height="17" font="2">。</text>
+<text top="1100" left="343" width="3" height="13" font="1"> </text>
+</page>
+</pdf2xml>

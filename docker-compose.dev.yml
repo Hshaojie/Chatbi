@@ -1,0 +1,20 @@
+
+services:
+  backend:
+    volumes:
+      - ./backend:/app/backend
+      - nexusmind_uploads:/app/data/uploads
+      - nexusmind_runtime:/app/runtime
+      - nexusmind_demo:/app/data:ro
+    # 镜像默认 CMD 没有 --reload，这里覆盖成热重载
+    command:
+      [
+        "python", "-m", "uvicorn", "main:app",
+        "--host", "0.0.0.0",
+        "--port", "8000",
+        "--reload",
+        "--reload-dir", "/app/backend",
+      ]
+    environment:
+      # Windows / macOS 的 bind mount 文件事件可能丢，强制轮询保证 reload 生效
+      WATCHFILES_FORCE_POLLING: "true"

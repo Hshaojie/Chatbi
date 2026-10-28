@@ -1,0 +1,15 @@
+delete
+  PDF: '与内容/零售（Chinook）两类'
+  DOC: ''
+delete
+  PDF: '（只读约束/方言函数/表列存在性/多语句拦截）'
+  DOC: ''
+delete
+  PDF: '（≤2轮）'
+  DOC: ''
+delete
+  PDF: '（空结果/TopN无LIMIT/NULL占比/比率越界）'
+  DOC: ''
+insert
+  PDF: ''
+  DOC: '、AgentHarness与Skill机制'

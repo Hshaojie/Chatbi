@@ -1,0 +1,241 @@
+import os
+import asyncio
+from dotenv import load_dotenv
+from pymilvus import AsyncMilvusClient
+from rag.embedding_provider import get_embeddings
+import logging
+from memory.memory_manager import MemoryManager
+from rag.knowledeg_base_manager import KnowledgeBaseManager
+
+
+logger = logging.getLogger(__name__)
+
+
+load_dotenv()
+
+
+import re as _re
+from pymilvus.client.async_grpc_handler import AsyncGrpcHandler
+from pymilvus.grpc_gen.common_pb2 import IndexState
+
+_original_wait_for_creating_index = AsyncGrpcHandler.wait_for_creating_index
+
+
+async def _compatible_wait_for_creating_index(self, *args, **kwargs):
+    """Lite（本地文件连接）索引即时生效直接返回完成；完整版走原生等待"""
+    uri = os.getenv("Milvus_url", "")
+    if uri and _re.match(r"^[./~]|^[a-zA-Z0-9_\-/]+\.db$", uri) and not uri.startswith(("http", "tcp")):
+        return IndexState.Finished, ""
+    return await _original_wait_for_creating_index(self, *args, **kwargs)
+
+
+AsyncGrpcHandler.wait_for_creating_index = _compatible_wait_for_creating_index
+
+_global_milvus_client = None
+
+
+async def get_milvus_client():
+    global _global_milvus_client
+    if _global_milvus_client is None:
+        _global_milvus_client = AsyncMilvusClientWrapper()
+    instance = _global_milvus_client
+    try:
+        await instance.ensure_collection()
+    except BaseException:
+        await instance.close()
+        raise
+    return instance
+
+
+class AsyncMilvusClientWrapper:
+
+    _instance = None
+    _singleton_initialized = False
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self):
+        if self._singleton_initialized:
+            return
+
+        # Keep local and container deployments deterministic even when the
+        # legacy lower-case collection variables are omitted.
+        self.knowledge_base_collection = (
+            os.getenv("knowledge_base_collection")
+            or os.getenv("MILVUS_KNOWLEDGE_COLLECTION")
+            or "nexusmind_knowledge"
+        )
+        self.memory_collection = (
+            os.getenv("memory_collection")
+            or os.getenv("MILVUS_MEMORY_COLLECTION")
+            or "nexusmind_memory"
+        )
+
+        self.embeddings = get_embeddings()
+        self.client = AsyncMilvusClient(
+            uri=os.getenv("Milvus_url"),
+            token=os.getenv("Token"),
+        )
+        self.dense_dim = int(os.getenv("dense_dimension", "1024"))
+        self._collection_initialized = False
+        self._collection_lock = asyncio.Lock()
+
+        self._singleton_initialized = True
+
+        self.memory_manager = MemoryManager(
+            client=self.client,
+            embeddings=self.embeddings,
+            collection_name=self.memory_collection,
+            dense_dim=self.dense_dim,
+        )
+
+        self.knowledge_base_manager = KnowledgeBaseManager(
+            client=self.client,
+            embeddings=self.embeddings,
+            collection_name=self.knowledge_base_collection,
+            dense_dim=self.dense_dim,
+        )
+
+    async def ensure_collection(self):
+        """确保集合已初始化（只在启动时调用一次）"""
+        if self._collection_initialized:
+            return
+
+        async with self._collection_lock:
+            if self._collection_initialized:
+                return
+            from infra.postgresql_client import get_postgresql_client
+            from rag.index_contract import bind_collection, index_configuration, repair_vector_indexes
+            pg = await get_postgresql_client()
+            # API and worker can start simultaneously. A local asyncio lock
+            # cannot stop another process loading a half-indexed collection.
+            # Lock each collection name in sorted order, including partial overlap.
+            async with pg.pool.acquire() as conn:
+                async with conn.transaction():
+                    await conn.execute("SET LOCAL lock_timeout = '120s'")
+                    for name in sorted({self.knowledge_base_collection, self.memory_collection}):
+                        await conn.execute("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", "collection-init:" + name)
+                    for collection, kind in ((self.knowledge_base_collection, "knowledge"), (self.memory_collection, "memory")):
+                        await bind_collection(pg, self.client, collection, index_configuration(self.dense_dim, kind),
+                            adopt_legacy=os.getenv("INDEX_ADOPT_LEGACY", "false").lower() == "true")
+                        await repair_vector_indexes(self.client, collection, kind)
+                    await self._init_knowledge_base_collection()
+                    await self._init_memory_collection()
+            self._collection_initialized = True
+
+    async def _init_memory_collection(self):
+        """初始化对话记忆集合"""
+        await self.memory_manager.init_collection()
+
+    async def _init_knowledge_base_collection(self):
+        """初始化知识库集合"""
+        await self.knowledge_base_manager.init_collection()
+
+    async def close(self):
+        """关闭客户端连接"""
+        if self.client:
+            await self.client.close()
+            logger.info("Milvus 客户端已关闭")
+        global _global_milvus_client
+        if _global_milvus_client is self:
+            _global_milvus_client = None
+        if type(self)._instance is self:
+            type(self)._instance = None
+        self._singleton_initialized = False
+        self._collection_initialized = False
+
+    # ==================== 记忆管理方法代理 ====================
+    async def hybrid_retrieval_memories(
+        self,
+        query: str,
+        user_id: int,
+        summary_k: int,
+        semantic_k: int,
+        episodic_k: int,
+        procedural_k: int,
+        tenant_id: str = "default",
+    ):
+        """混合检索记忆 - 代理到 memory_manager"""
+        return await self.memory_manager.hybrid_retrieval_memories(
+            query=query,
+            user_id=user_id,
+            summary_k=summary_k,
+            semantic_k=semantic_k,
+            episodic_k=episodic_k,
+            procedural_k=procedural_k,
+            tenant_id=tenant_id,
+        )
+
+    async def get_memory_attribute_keys(self, user_id: int, tenant_id: str = "default"):
+        return await self.memory_manager.get_memory_attribute_keys(user_id, tenant_id)
+
+    async def resolve_conflicts(
+        self, filtered_memory: dict, user_id: int, tenant_id: str = "default"
+    ) -> dict:
+        """检测并过滤重复记忆 - 代理到 memory_manager"""
+        return await self.memory_manager.resolve_conflicts(
+            filtered_memory, user_id, tenant_id
+        )
+
+    async def delete_session_memories(
+        self, user_id: int, tenant_id: str, thread_id: str
+    ) -> int:
+        return await self.memory_manager.delete_session_memories(
+            user_id, tenant_id, thread_id
+        )
+
+    async def add_memories_batch(
+        self,
+        user_id: int,
+        thread_id: str,
+        memory_dict: dict,
+        summary_id: str = None,
+        **kwargs
+    ) -> bool:
+        """批量添加记忆 - 代理到 memory_manager"""
+        return await self.memory_manager.add_memories_batch(
+            user_id, thread_id, memory_dict, summary_id, **kwargs
+        )
+
+    # ==================== 知识库管理方法代理 ====================
+
+    async def hybrid_retrieval_knowledge_base(
+        self, query: str, knowledge_base_id: str, top_k: int, user_id: int
+    ):
+        """混合检索知识库 - 代理到 knowledge_base_manager"""
+        return await self.knowledge_base_manager.hybrid_retrieval_knowledge_base(
+            query=query,
+            knowledge_base_id=knowledge_base_id,
+            top_k=top_k,
+            user_id=user_id,
+        )
+
+    async def add_chunks_batch(
+        self, knowledge_base_id: str, chunks, user_id: int, vectors=None
+    ) -> bool:
+        """批量添加知识块 - 代理到 knowledge_base_manager"""
+        return await self.knowledge_base_manager.add_chunks_batch(
+            knowledge_base_id, chunks, user_id, vectors=vectors
+        )
+
+    async def prepare_chunks(self, chunks):
+        return await self.embeddings.aembed_documents([chunk.page_content for chunk in chunks])
+
+    async def delete_knowledge_file_chunks(
+        self, knowledge_base_id: str, user_id: int
+    ) -> bool:
+        """删除知识库文件块 - 代理到 knowledge_base_manager"""
+        return await self.knowledge_base_manager.delete_knowledge_file_chunks(
+            knowledge_base_id, user_id
+        )
+
+    async def delete_file_chunks(
+        self, knowledge_base_id: str, file_hash: str, user_id: int
+    ):
+        """删除知识库文件 - 代理到 knowledge_base_manager"""
+        return await self.knowledge_base_manager.delete_file_chunks(
+            knowledge_base_id=knowledge_base_id, file_hash=file_hash, user_id=user_id
+        )

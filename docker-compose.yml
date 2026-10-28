@@ -1,0 +1,241 @@
+# NexusMind 一键部署编排
+# 使用：配置模型后运行 python scripts/deploy.py；首次部署先运行 --init。
+#
+# 说明：
+# - milvus/etcd/minio：完整版向量数据库（生产级）
+# - postgres / redis：业务数据库与会话缓存
+# - backend：FastAPI 服务（自动等待依赖就绪后启动）
+# - CLI 在宿主机运行：python cli.py chat（默认连 localhost:8000）
+
+services:
+  # ========== Milvus 向量数据库 ==========
+  etcd:
+    container_name: nexusmind-etcd
+    image: quay.io/coreos/etcd:v3.5.25
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - ./docker-data/etcd:/etcd
+    command: etcd -advertise-client-urls=http://etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    restart: unless-stopped
+
+  minio:
+    container_name: nexusmind-minio
+    # Docker Hub removed the legacy minio/minio repository. Milvus upstream
+    # publishes the same release through Quay for reproducible deployments.
+    image: quay.io/minio/minio:RELEASE.2024-12-18T13-15-44Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    volumes:
+      - ./docker-data/minio:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    restart: unless-stopped
+
+  milvus:
+    container_name: nexusmind-milvus
+    # Keep the server on the 2.6 line used by pymilvus 2.6.x in this project.
+    image: milvusdb/milvus:v2.6.24
+    command: ["milvus", "run", "standalone"]
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MINIO_REGION: us-east-1
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      MQ_TYPE: woodpecker
+    volumes:
+      - ./docker-data/milvus:/var/lib/milvus
+    ports:
+      - "127.0.0.1:19530:19530"
+      - "127.0.0.1:9091:9091"
+    depends_on:
+      etcd:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+      start_period: 90s
+    restart: unless-stopped
+
+  # ========== PostgreSQL ==========
+  postgres:
+    container_name: nexusmind-postgres
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-nexusmind}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nexusmind123}
+      POSTGRES_DB: echomind_db
+    volumes:
+      - ./docker-data/postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-nexusmind}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ========== Redis ==========
+  redis:
+    container_name: nexusmind-redis
+    image: redis:7-alpine
+    volumes:
+      - ./docker-data/redis:/data
+    ports:
+      # 宿主机 6379 常被本机 Redis 服务占用，这里映射到 6380；
+      # 容器间仍通过服务名 redis:6379 访问，不影响后端功能。
+      - "127.0.0.1:6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ========== FastAPI 后端 ==========
+  backend:
+    container_name: nexusmind-backend
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+    image: nexusmind-backend:local
+    env_file: .env
+    environment:
+      # 覆盖 .env 中的本地地址，指向 compose 内部服务
+      Milvus_url: http://milvus:19530
+      Token: root:Milvus
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      HARNESS_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      REDIS_URL: redis://redis:6379/0
+      UPLOAD_WORKER_MODE: external
+      MAINTENANCE_ENABLED: "false"
+      UPLOAD_STORAGE_ROOT: /app/data/uploads
+      CONTEXT_STORE_DIR: /app/runtime/context_store
+      MEMORY_FILES_ROOT: /app/runtime/memory_files
+      EVOLUTION_DIR: /app/runtime/evolution
+      # 每次对话的 trace / BadCase JSONL 归档目录（/app/data 为只读演示数据卷）
+      OBSERVABILITY_TRACE_DIR: /app/runtime/observability
+    volumes:
+      - nexusmind_uploads:/app/data/uploads
+      # 运行时目录改为宿主机 bind mount，便于直接查看 trace / context_store 等文件
+      - ./docker-data/runtime:/app/runtime
+      - nexusmind_demo:/app/data:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      milvus:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "/app/scripts/healthcheck.py", "api"]
+      interval: 15s
+      timeout: 10s
+      retries: 4
+      start_period: 120s
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    image: nexusmind-backend:local
+    command: ["python", "-m", "rag.upload_worker"]
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/backend
+      Milvus_url: http://milvus:19530
+      Token: root:Milvus
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      HARNESS_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      REDIS_URL: redis://redis:6379/0
+      MAINTENANCE_ENABLED: "true"
+      UPLOAD_STORAGE_ROOT: /app/data/uploads
+      CONTEXT_STORE_DIR: /app/runtime/context_store
+      MEMORY_FILES_ROOT: /app/runtime/memory_files
+      EVOLUTION_DIR: /app/runtime/evolution
+      WORKER_HEALTH_FILE: /tmp/nexusmind-worker-health
+    volumes:
+      - nexusmind_uploads:/app/data/uploads
+      # 与 backend 共享同一宿主机目录（bind mount）
+      - ./docker-data/runtime:/app/runtime
+      - nexusmind_demo:/app/data:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      milvus:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "/app/scripts/healthcheck.py", "worker"]
+      interval: 15s
+      timeout: 10s
+      retries: 4
+      start_period: 120s
+    restart: unless-stopped
+
+  migrate:
+    image: nexusmind-backend:local
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    command: ["python", "/app/scripts/migrate_database.py"]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      HARNESS_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-nexusmind}:${POSTGRES_PASSWORD:-nexusmind123}@postgres:5432/echomind_db
+      DEMO_DATA_ENABLED: "true"
+    volumes:
+      - nexusmind_demo:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmmirror.com}
+    image: nexusmind-frontend:local
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  nexusmind_uploads:
+  nexusmind_runtime:
+  nexusmind_demo:
